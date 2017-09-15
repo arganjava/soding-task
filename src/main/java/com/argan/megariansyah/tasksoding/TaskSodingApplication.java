@@ -2,10 +2,17 @@ package com.argan.megariansyah.tasksoding;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-public class TaskSodingApplication {
-
+@ComponentScan
+public class TaskSodingApplication extends SpringBootServletInitializer {
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(TaskSodingApplication.class);
+	}
 	public static void main(String[] args) {
 		SpringApplication.run(TaskSodingApplication.class, args);
 	}
