@@ -1,1 +1,1 @@
-mvn clean && mvn spring-boot:run -DskipTests
+mvn spring-boot:run
