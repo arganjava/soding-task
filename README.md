@@ -19,7 +19,7 @@ A step by step series of examples that tell you have to get a development env ru
 ## Running On Local
 ```
 1. Create Database Name ## tasksoding
-2. Open application-dev.prperties change spring.datasource.username: {your username} & spring.datasource.password: {your password}
+2. Open application-dev.properties change spring.datasource.username: {your username} & spring.datasource.password: {your password}
 3. Open application.properties should spring.profiles.active=dev
 2. open cmd and select project directory and run, example : D:\Argan\task-soding>mvn spring-boot:run
 3. Running on Debug Mode, example : D:\Argan\task-soding>mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,address=8000
@@ -32,4 +32,8 @@ A step by step series of examples that tell you have to get a development env ru
 2. Follow Tutorial https://devcenter.heroku.com/articles/getting-started-with-java#introduction
 3. Open application-heroku.prperties change spring.datasource.username: {your username} & spring.datasource.password: {your password}
 4. Open application.properties should spring.profiles.active=heroku
+5. See target deployment at Procfile.file
 ```
+## Free of use
+## Next Tutorial Coming Soooooooonnnnnnnnnnnnnn!!!!!
+### Author by Argan Megariansyah (arganjava@gmail.com)
