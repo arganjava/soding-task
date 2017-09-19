@@ -75,7 +75,7 @@ public class SodingController extends SodingBaseCrud {
     }
 
     private Pageable pageInit(int page) {
-        Sort sort = new Sort(new Sort.Order(Sort.Direction.ASC, "dateCreated"));
+        Sort sort = new Sort(new Sort.Order(Sort.Direction.DESC, "dateCreated"));
         return new PageRequest(page, SIZE_PER_PAGE, sort);
     }
 
