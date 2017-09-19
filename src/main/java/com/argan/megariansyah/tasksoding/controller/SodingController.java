@@ -43,7 +43,7 @@ public class SodingController extends SodingBaseCrud {
     }
 
     private int SIZE_PER_PAGE = 5;
-    private int CURRENT_PAGE = 1;
+    private int INIT_PAGE = 0;
 
 
     @Override
@@ -63,18 +63,10 @@ public class SodingController extends SodingBaseCrud {
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     public ResponseEntity getAll(HttpServletRequest request) {
         try {
-            String pageCondition = request.getParameter("pageCondition");
             String pageNumber = request.getParameter("pageNumber");
 
-            Page<Task> page = null;
+            Page<Task> page= taskRepository.findAll(pageInit(Integer.parseInt(pageNumber)));
 
-            if ("isPaging".equals(pageCondition)) {
-                page = taskRepository.findAll(new PageRequest(Integer.parseInt(pageNumber), SIZE_PER_PAGE));
-            } else if ("isPaging".equals(pageCondition)) {
-                page = taskRepository.findAll(pageInit(Integer.parseInt(pageNumber)).previousOrFirst());
-            } else {
-                page = taskRepository.findAll(pageInit(CURRENT_PAGE).first());
-            }
             return new ResponseEntity(page, HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
@@ -115,8 +107,10 @@ public class SodingController extends SodingBaseCrud {
                 taskFind.setDescription(description);
                 taskFind.updateTask().validate();
                 taskRepository.save(taskFind);
+                return new ResponseEntity(taskFind, HttpStatus.OK);
+            }else {
+                throw new Exception("Record not found");
             }
-            return new ResponseEntity(taskFind, HttpStatus.OK);
         } catch (Exception e) {
             log.error(e.getMessage());
             return new ResponseEntity(errorMapping(e.getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
